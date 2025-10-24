@@ -10,7 +10,7 @@ export interface User {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private apiUrl = 'https://habitstracker-api-8g6h.onrender.com';
+  private apiUrl = 'https://habitstracker-api-8g6h.onrender.com/api/users';
 
   constructor(private http: HttpClient) {}
 
