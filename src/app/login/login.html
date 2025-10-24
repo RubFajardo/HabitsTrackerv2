@@ -1,1 +1,149 @@
-<p>login works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+  <div
+    class="relative w-[95vw] h-auto md:h-[90vh] max-w-[1200px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-700"
+  >
+    <!-- Panel Login -->
+    <div
+      class="w-full md:w-1/2 flex flex-col justify-center items-center p-8 transition-all duration-500"
+    >
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Iniciar Sesión</h2>
+
+      <form
+        #loginForm="ngForm"
+        (ngSubmit)="onSubmit(loginForm)"
+        class="w-full max-w-sm"
+      >
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1">Nombre</label>
+          <input
+            type="text"
+            name="name"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-1">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+        >
+          Entrar
+        </button>
+      </form>
+    </div>
+
+    <!-- Panel Registro -->
+    <div
+      class="w-full md:w-1/2 flex flex-col justify-center items-center p-8 transition-all duration-500"
+    >
+      <h2 class="text-2xl font-semibold text-gray-800 mb-6">Crear Cuenta</h2>
+
+      <form
+        #registerForm="ngForm"
+        (ngSubmit)="onSubmit(registerForm)"
+        class="w-full max-w-sm"
+      >
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1">Nombre</label>
+          <input
+            type="text"
+            name="name"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-1">Contraseña</label>
+          <input
+            type="password"
+            name="password"
+            ngModel
+            required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+        >
+          Registrarse
+        </button>
+      </form>
+    </div>
+
+    <!-- Cover deslizante -->
+    <div
+      class="absolute top-0 left-0 bg-gradient-to-r from-blue-600 to-blue-400 text-white flex flex-col items-center justify-center text-center p-8 transition-transform duration-700 ease-in-out z-20
+         w-full h-1/2 md:w-1/2 md:h-full"
+      [ngClass]="{
+
+    'md:translate-x-full md:translate-y-0': isLoginMode && isDesktop,
+
+    'translate-y-full md:translate-x-0': isLoginMode && !isDesktop,
+
+    'translate-x-0 translate-y-0': !isLoginMode
+  }"
+    >
+      @if (isLoginMode) {
+        <div>
+          <h2 class="text-3xl font-bold mb-3">¿Nuevo aquí?</h2>
+          <p class="mb-6">Empieza con nosotros y crea tu cuenta</p>
+          <button
+            (click)="toggleMode()"
+            class="px-6 py-2 border border-white rounded-lg hover:bg-white hover:text-blue-600 transition"
+          >
+            Crear cuenta
+          </button>
+        </div>
+      } @else {
+        <div>
+          <h2 class="text-3xl font-bold mb-3">¿Ya tienes cuenta?</h2>
+          <p class="mb-6">Inicia sesión para continuar</p>
+          <button
+            (click)="toggleMode()"
+            class="px-6 py-2 border border-white rounded-lg hover:bg-white hover:text-blue-600 transition"
+          >
+            Iniciar sesión
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</div>
